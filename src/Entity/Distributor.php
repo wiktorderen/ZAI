@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\SuperAdminRepository;
+use App\Repository\DistributorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=SuperAdminRepository::class)
+ * @ORM\Entity(repositoryClass=DistributorRepository::class)
  */
-class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
+class Distributor implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id
@@ -41,9 +43,14 @@ class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="distributor")
      */
-    private $last_name;
+    private $orders;
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,7 +94,7 @@ class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -146,14 +153,32 @@ class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getLastName(): ?string
+    /**
+     * @return Collection<int, Order>
+     */
+    public function getOrders(): Collection
     {
-        return $this->last_name;
+        return $this->orders;
     }
 
-    public function setLastName(string $last_name): self
+    public function addOrder(Order $order): self
     {
-        $this->last_name = $last_name;
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setDistributor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getDistributor() === $this) {
+                $order->setDistributor(null);
+            }
+        }
 
         return $this;
     }

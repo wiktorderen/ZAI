@@ -1,0 +1,24 @@
+security:
+  role_hierarchy:
+
+    ROLE_ADMIN:
+      - ROLE_USER
+      - ROLE_ADD
+      - ROLE_EDITOR
+      - ROLE_DISTRIBUTOR
+      - ROLE_TRADER
+
+    ROLE_DISTRIBUTOR:
+      - ROLE_USER
+      #- ROLE_ORDER_LIST
+      - ROLE_EDITOR
+
+    ROLE_TRADER:
+      - ROLE_USER
+      #- ROLE_ORDER_MANGER
+      - ROLE_EDITOR
+
+    #--- ROLE CRUD ---#
+    ROLE_ORDER_MANAGER:
+      ROLE_ADMIN
+      ROLE_DISTRIBUTOR ROLE_TRADER

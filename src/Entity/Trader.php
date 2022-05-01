@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\SuperAdminRepository;
+use App\Repository\TraderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass=SuperAdminRepository::class)
+ * @ORM\Entity(repositoryClass=TraderRepository::class)
  */
-class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
+class Trader implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id
@@ -38,12 +40,22 @@ class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $last_name;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Order::class, mappedBy="trader")
+     */
+    private $orders;
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,7 +99,7 @@ class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -134,14 +146,14 @@ class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getName(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->name;
+        return $this->first_name;
     }
 
-    public function setName(string $name): self
+    public function setFirstName(string $first_name): self
     {
-        $this->name = $name;
+        $this->first_name = $first_name;
 
         return $this;
     }
@@ -154,6 +166,36 @@ class SuperAdmin implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(string $last_name): self
     {
         $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Order>
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setTrader($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->removeElement($order)) {
+            // set the owning side to null (unless already changed)
+            if ($order->getTrader() === $this) {
+                $order->setTrader(null);
+            }
+        }
 
         return $this;
     }
