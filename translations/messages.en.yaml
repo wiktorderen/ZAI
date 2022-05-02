@@ -1,0 +1,28 @@
+Admin:
+  email: E-mail
+  first_name: First Name
+  last_name: Last Name
+
+Distributor:
+  email: E-mail
+  name: Full Name
+
+Trader:
+  email: E-mail
+  first_name: First Name
+  last_name: Last Name
+
+Product:
+  name: Name
+  features: Features
+
+Order:
+  order.distributor: Distributor
+  trader: Trader
+  product: Product
+
+Environment:
+  default_trader: Default Trader
+
+dashboard:
+  admins: Admins

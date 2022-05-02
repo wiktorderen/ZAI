@@ -27,14 +27,13 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        //return parent::index();
 
         //$routeBuilder = $this->get(CrudUrlGenerator::class)->build();
+        //return $this->redirect($routeBuilder->setController(OrderCrudController::class)->generateUrl());
 
-        //return $this->redirect($routeBuilder->setController(SuperAdminCrudController::class)->generateUrl());
-
-        //$adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
-        //return $this->redirect($adminUrlGenerator->setController(OrderCrudController::class)->generateUrl());
+        $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
+        return $this->redirect($adminUrlGenerator->setController(OrderCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -46,12 +45,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return[
-         MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-         MenuItem::linkToCrud('dashboard.admin', 'fas fa-list', SuperAdmin::class),
-         MenuItem::linkToCrud('dashboard.distributor', 'fas fa-list', Distributor::class),
-         MenuItem::linkToCrud('dashboard.trader', 'fas fa-list', Trader::class),
-         MenuItem::linkToCrud('dashboard.order', 'fas fa-list', Order::class),
-         MenuItem::linkToCrud('dashboard.admin', 'fas fa-list', Product::class),
+         //MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+         MenuItem::linkToCrud('dashboard.admin', 'fas fa-user-cog', SuperAdmin::class),
+         MenuItem::linkToCrud('dashboard.distributor', 'fas fa-truck', Distributor::class),
+         MenuItem::linkToCrud('dashboard.trader', 'fas fa-handshake', Trader::class),
+         MenuItem::linkToCrud('dashboard.order', 'fas fa-clipboard-list', Order::class),
+         MenuItem::linkToCrud('dashboard.product', 'fab fa-product-hunt', Product::class),
         ];
     }
 }

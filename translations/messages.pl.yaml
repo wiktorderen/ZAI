@@ -1,0 +1,48 @@
+admin:
+  email: E-mail
+  first_name: Imię
+  last_name: Nazwisko
+
+distributor:
+  email: E-mail
+  name: Imię i Nazwisko
+
+trader:
+  email: E-mail
+  first_name: Imię
+  last_name: Nazwisko
+
+product:
+  name: Nazwa
+  features: Cechy
+
+order:
+  distributor: Dystrybutor
+  trader: Handlowiec
+  product: Produkt
+  time: Data
+
+
+environment:
+  default_trader: Domyslny Handlowiec
+
+dashboard:
+  admins: Administratorzy
+  distributors: Dystrybutorzy
+  traders: Handlowcy
+  products: Produkty
+  orders: Zamówienia
+  environment: Ustawienia
+
+crud:
+  admins: Administratorzy
+  admin: Administratora
+  distributors: Dystrybutorzy
+  distributor: Dystrybutora
+  traders: Handlowcy
+  trader: Handlowca
+  products: Produkty
+  product: Produkt
+  orders: Zamówienia
+  order: Zamówienie
+  environment: Ustawienia
