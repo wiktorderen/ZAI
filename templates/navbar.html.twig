@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="{{ asset('/') }}">{# <img src="{{ asset('chessFlag.jpg') }}" width="30" height="30" class="d-inline-block mr-1" alt="" />#}
+        ZAI
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarMenu">
+        <ul class="navbar-nav mr-auto">
+            <li class="navbar-item active">
+                <a class="navbar-link btn btn-outline-info" href="{{ asset('/') }}">Strona Domowa <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <span class="navbar-link">
+                {#<a href="{{ asset('forgotten_password') }}"  class="btn btn-outline-danger" role="button"> Odzyskaj hasło </a>#}
+                <a href="{{ asset('login') }}"  class="btn btn-outline-success" role="button"> Zaloguj </a>
+
+{#<a href="{{ asset('register') }}" class="btn btn-outline-danger" role="button"> Register </a>#}
+            </span>
+    </div>
+</nav>

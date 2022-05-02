@@ -1,20 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomePageController!{% endblock %}
+{% block title %}ZAI{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {% include 'navbar.html.twig' %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-2 text-center">
+                <p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/ZAI/src/Controller/HomePageController.php'|file_link(0) }}">src/Controller/HomePageController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/ZAI/templates/home_page/index.html.twig'|file_link(0) }}">templates/home_page/index.html.twig</a></code></li>
-    </ul>
-</div>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="fixed-bottom page-footer font-small teal pt-1 bg-light ">
+        <div class="col-sm-12 text-center">
+            <p>ZAI</p>
+        </div>
+        <div class="footer-copyright text-center py-1">
+            © 2022 Copyright: <a">Wiktor Dereń</a>
+        </div>
+    </footer>
+
 {% endblock %}

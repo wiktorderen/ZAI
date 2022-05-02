@@ -27,7 +27,8 @@ class SuperAdminCrudController extends AbstractCrudController
         return [
             IdField::new('id'),
             TextField::new('email'),
-            TextEditorField::new('first_name'),
+            TextField::new('name'),
+            TextField::new('last_name'),
         ];
     }
 }
