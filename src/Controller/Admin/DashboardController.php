@@ -46,11 +46,11 @@ class DashboardController extends AbstractDashboardController
     {
         return[
          //MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-         MenuItem::linkToCrud('dashboard.admin', 'fas fa-user-cog', SuperAdmin::class),
-         MenuItem::linkToCrud('dashboard.distributor', 'fas fa-truck', Distributor::class),
-         MenuItem::linkToCrud('dashboard.trader', 'fas fa-handshake', Trader::class),
-         MenuItem::linkToCrud('dashboard.order', 'fas fa-clipboard-list', Order::class),
-         MenuItem::linkToCrud('dashboard.product', 'fab fa-product-hunt', Product::class),
+         MenuItem::linkToCrud('dashboard.admins', 'fas fa-user-cog', SuperAdmin::class),
+         MenuItem::linkToCrud('dashboard.distributors', 'fas fa-truck', Distributor::class),
+         MenuItem::linkToCrud('dashboard.traders', 'fas fa-handshake', Trader::class),
+         MenuItem::linkToCrud('dashboard.orders', 'fas fa-clipboard-list', Order::class),
+         MenuItem::linkToCrud('dashboard.products', 'fab fa-product-hunt', Product::class),
         ];
     }
 }

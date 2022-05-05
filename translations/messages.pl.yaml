@@ -1,6 +1,6 @@
-admin:
+SuperAdmin:
   email: E-mail
-  first_name: Imię
+  Name: Imię
   last_name: Nazwisko
 
 distributor:
@@ -35,10 +35,10 @@ dashboard:
   environment: Ustawienia
 
 crud:
-  admins: Administratorzy
-  admin: Administratora
-  distributors: Dystrybutorzy
-  distributor: Dystrybutora
+  admin: Administratorzy
+  admins: Administratora
+  Distributor: Dystrybutorzy
+  distributors: Dystrybutora
   traders: Handlowcy
   trader: Handlowca
   products: Produkty
@@ -46,3 +46,4 @@ crud:
   orders: Zamówienia
   order: Zamówienie
   environment: Ustawienia
+  SuperAdmin: Administrator

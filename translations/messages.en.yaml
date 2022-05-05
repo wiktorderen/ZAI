@@ -1,7 +1,8 @@
-Admin:
-  email: E-mail
-  first_name: First Name
+SuperAdmin:
+  email: Email
+  name: Name
   last_name: Last Name
+  SuperAdmin: SuperAdmin
 
 Distributor:
   email: E-mail
@@ -26,3 +27,4 @@ Environment:
 
 dashboard:
   admins: Admins
+  distributors: Distributors
