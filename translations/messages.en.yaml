@@ -28,3 +28,6 @@ Environment:
 dashboard:
   admins: Admins
   distributors: Distributors
+  traders: Traders
+  orders: Orders
+  products: Products
