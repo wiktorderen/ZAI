@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Zaloguj się{% endblock %}
+{% block title %}Log in{% endblock %}
 
 {% block body %}
     {% include 'navbar.html.twig' %}
@@ -12,12 +12,12 @@
                         <div class="card-body">
                             <form class="form-horizontal" role="form" method="post">
                                 {% if error %}
-                                    <div class="alert alert-danger">Nieprawidłowe dane.</div>
+                                    <div class="alert alert-danger">Incorrect data.</div>
                                 {% endif %}
 
                                 {% if app.user %}
                                     <div class="mb-3">
-                                        Jesteś zalogowany jako {{ app.user.username }}, <a href="{{ path('app_logout') }}">Wyloguj</a>
+                                        Logged in as {{ app.user.username }} <a href="{{ path('app_logout') }}">Log out</a>
                                     </div>
                                 {% endif %}
 
@@ -27,16 +27,16 @@
                                            name="email" id="inputEmail" placeholder="E-mail"
                                            class="form-control" required autofocus pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                                     <br>
-                                    <input type="password" name="password" id="inputPassword" placeholder="Hasło" class="form-control" required>
+                                    <input type="password" name="password" id="inputPassword" placeholder="Password" class="form-control" required>
                                     <br>
-                                 {#   <input type="hidden" name="_csrf_token"
+                                    <input type="hidden" name="_csrf_token"
                                            value="{{ csrf_token('authenticate') }}"
-                                    >#}
-                                   {# <input type="checkbox" id="_remember_me" name="_remember_me" checked/>
-                                    <label for="_remember_me">Nie wylogowuj mnie</label>#}
+                                    >{#
+                                    <input type="checkbox" id="_remember_me" name="_remember_me" checked/>
+                                    <label for="_remember_me">Remember me</label>#}
                                 </div>
                                 <button class="btn btn-sm btn-primary col-md-12" type="submit">
-                                    Zaloguj
+                                    Log in
                                 </button>
                             </form>
                         </div>
