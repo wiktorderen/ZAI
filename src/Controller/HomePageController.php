@@ -14,7 +14,6 @@ class HomePageController extends AbstractController
      */
     public function index(): Response
     {
-        $city_name = 'Olsztyn';
         $api_key = '702160109552cbfcf97527f0449b8760';
         $api_url = 'https://api.openweathermap.org/data/2.5/weather?lat=53.775275&lon=20.486707&appid=' .$api_key;
         $weather = json_decode( file_get_contents(($api_url), true));
