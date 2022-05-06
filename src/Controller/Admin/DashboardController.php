@@ -46,11 +46,11 @@ class DashboardController extends AbstractDashboardController
     {
         return[
          //MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-         MenuItem::linkToCrud('dashboard.admins', 'fas fa-user-cog', SuperAdmin::class),
-         MenuItem::linkToCrud('dashboard.distributors', 'fas fa-truck', Distributor::class),
-         MenuItem::linkToCrud('dashboard.traders', 'fas fa-handshake', Trader::class),
-         MenuItem::linkToCrud('dashboard.orders', 'fas fa-clipboard-list', Order::class),
-         MenuItem::linkToCrud('dashboard.products', 'fab fa-product-hunt', Product::class),
+         MenuItem::linkToCrud('dashboard.admins', 'fas fa-user-cog', SuperAdmin::class)->setPermission('ROLE_ADMIN'),
+         MenuItem::linkToCrud('dashboard.distributors', 'fas fa-truck', Distributor::class)->setPermission('ROLE_ADMIN'),
+         MenuItem::linkToCrud('dashboard.traders', 'fas fa-handshake', Trader::class)->setPermission('ROLE_TRADER'),
+         MenuItem::linkToCrud('dashboard.orders', 'fas fa-clipboard-list', Order::class)->setPermission('ROLE_USER'),
+         MenuItem::linkToCrud('dashboard.products', 'fab fa-product-hunt', Product::class)->setPermission('ROLE_ADMIN'),
         ];
     }
 }

@@ -32,6 +32,7 @@ security:
         all_users:
             chain:
                 providers: [ 'app_user_provider', 'trader_provider', 'distributor_provider' ]
+
         # used to reload user from session & other features (e.g. switch_user)
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
@@ -41,7 +42,7 @@ security:
 
         main:
             lazy: true
-            provider: app_user_provider
+            provider: all_users
             custom_authenticator: App\Security\AdminAuthenticator
             logout:
                 path: app_logout

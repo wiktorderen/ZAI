@@ -31,4 +31,21 @@ class SuperAdminCrudController extends AbstractCrudController
             TextField::new('last_name'),
         ];
     }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return Crud::new()->setEntityLabelInSingular('Admin')->setEntityLabelInPlural('Admins')->setEntityPermission('ROLE_ADMIN');
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        $editAdmin = Action::new('admin', 'Edit', 'fa fa-file-admin')->linkToCrudAction('edit');
+
+        return $actions
+            ->add(Crud::PAGE_DETAIL,$editAdmin)
+            ->setPermission('admin', 'ROLE_ADMIN')
+            ->setPermission(Action::EDIT, 'ROLE_ADMIN')
+            ->disable(Action::DELETE)
+            ->setPermission(Action::NEW, 'ROLE_ADMIN');
+    }
 }
