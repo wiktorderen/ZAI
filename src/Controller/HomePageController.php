@@ -21,13 +21,18 @@ class HomePageController extends AbstractController
 
         $weather_json = json_encode($weather);
         $temperature = $weather->main->temp;
-        $celcius = round($temperature - 273.15);
-        //$current_temp = $weather['weather'][0]['main'];
-        //$current_desc = $weather[0]['description'];
+        $celsius = round($temperature - 273.15);
+        $city = $weather->name;
+        $sun_clouds = $weather->weather[0]->main;
+
 
 
         return $this->render('home_page/index.html.twig',
-            array('celcius' => $celcius)
+            array('celsius' => $celsius,
+                'weather' => $weather,
+                'city' => $city,
+                'sun_clouds' => $sun_clouds)
         );
     }
 }
+

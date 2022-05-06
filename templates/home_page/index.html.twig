@@ -9,9 +9,17 @@
         <div class="row">
             <div class="col-sm-12 mt-2 text-center">
                 <p>
-                {% if celcius %}
-                    <pre>Current temperature in Olsztyn is {{ celcius }} celsius degrees.</pre>
+                {% if celsius %}
+                    <pre>Current temperature in {{ city }} is {{ celsius }} celsius degrees.</pre>
                 {% endif %}
+                {% if sun_clouds == "Clouds"%}
+                    <img src="http://openweathermap.org/img/wn/03d@2x.png">
+                {% elseif sun_clouds == "Clear" %}
+                    <img src="http://openweathermap.org/img/wn/01d@2x.png">
+                {% elseif sun_clouds == "Rain" %}
+                    <img src="http://openweathermap.org/img/wn/09d@2x.png">
+                {% endif %}
+
                 </p>
             </div>
         </div>
