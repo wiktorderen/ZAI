@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-2 text-center">
+                <br>
+                <h1>Page not found</h1>
+                <br><br>
+                <p>
+                    The requested page couldn't be located.
+                </p>
+                <p>
+                    Maybe You do not have enough permissions to see this page or page does not exist.
+                </p>
+                <p>
+                    Checkout for any URL misspelling or return to the<a href="{{ asset('/') }}"> homepage</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
