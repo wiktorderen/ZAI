@@ -24,7 +24,7 @@ class HomePageController extends AbstractController
         $city = $weather->name;
         $sun_clouds = $weather->weather[0]->main;
 
-
+        
 
         return $this->render('home_page/index.html.twig',
             array('celsius' => $celsius,
@@ -34,4 +34,3 @@ class HomePageController extends AbstractController
         );
     }
 }
-

@@ -182,4 +182,15 @@ class Distributor implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function __RoleToString(): array
+    {
+        return $this->roles;
+    }
 }

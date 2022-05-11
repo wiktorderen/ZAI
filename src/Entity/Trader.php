@@ -199,4 +199,10 @@ class Trader implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function __toString()
+    {
+        $fName = $this->first_name;
+        return $fName . " " . $this->last_name;
+    }
 }
