@@ -29,6 +29,16 @@ class Order
      */
     private $trader;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="orders")
+     */
+    private $product;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $time;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +64,30 @@ class Order
     public function setTrader(?Trader $trader): self
     {
         $this->trader = $trader;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    public function getTime(): ?\DateTimeInterface
+    {
+        return $this->time;
+    }
+
+    public function setTime(?\DateTimeInterface $time): self
+    {
+        $this->time = $time;
 
         return $this;
     }

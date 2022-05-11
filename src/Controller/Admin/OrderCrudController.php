@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 
 class OrderCrudController extends AbstractCrudController
 {
@@ -20,9 +21,11 @@ class OrderCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            //IdField::new('id'),
             AssociationField::new('distributor'),
             AssociationField::new('trader'),
+            AssociationField::new('product'),
+            DateField::new('time'),
         ];
     }
 
