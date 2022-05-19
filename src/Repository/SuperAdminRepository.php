@@ -90,4 +90,14 @@ class SuperAdminRepository extends ServiceEntityRepository implements PasswordUp
         ;
     }
     */
+
+
+
+    public function getAll()
+    {
+        $qb = $this->createQueryBuilder('u');
+
+
+        return $qb->getQuery()->getArrayResult();
+    }
 }

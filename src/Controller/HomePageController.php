@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+
 class HomePageController extends AbstractController
 {
     /**
@@ -24,7 +25,12 @@ class HomePageController extends AbstractController
         $city = $weather->name;
         $sun_clouds = $weather->weather[0]->main;
 
-        
+
+        $news_apiKey = 'aa038d2bf8bb48d1ab4f00d96a3837d2';
+        $news_apiURL = 'https://newsapi.org/v2/everything?q=Apple&from=2022-05-11&sortBy=popularity&apiKey='.$news_apiKey;
+        $news = json_encode( file_get_contents(($news_apiURL), true));
+        //dump($news);
+
 
         return $this->render('home_page/index.html.twig',
             array('celsius' => $celsius,
